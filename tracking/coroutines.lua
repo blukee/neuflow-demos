@@ -14,24 +14,24 @@ inline.preamble [[
 
 c.RBF = inline.load [[
       //-- get args
-      const void* torch_Tensor_id = luaT_checktypename2id(L, "torch.DoubleTensor");
-      THDoubleTensor *input_data    = luaT_checkudata(L, 1, torch_Tensor_id);
-      THDoubleTensor *output_data   = luaT_checkudata(L, 2, torch_Tensor_id);
-      THDoubleTensor *code_data     = luaT_checkudata(L, 3, torch_Tensor_id);
-      THDoubleTensor *weight_data   = luaT_checkudata(L, 4, torch_Tensor_id);
-      THDoubleTensor *std_data      = luaT_checkudata(L, 5, torch_Tensor_id);
+      const void* torch_Tensor_id = luaT_checktypename2id(L, "torch.FloatTensor");
+      THFloatTensor *input_data    = luaT_checkudata(L, 1, torch_Tensor_id);
+      THFloatTensor *output_data   = luaT_checkudata(L, 2, torch_Tensor_id);
+      THFloatTensor *code_data     = luaT_checkudata(L, 3, torch_Tensor_id);
+      THFloatTensor *weight_data   = luaT_checkudata(L, 4, torch_Tensor_id);
+      THFloatTensor *std_data      = luaT_checkudata(L, 5, torch_Tensor_id);
       
       int i,k,x,y;
       int ichannels = input_data->size[0];
       int iheight = input_data->size[1];
       int iwidth = input_data->size[2];
       int numProto = weight_data->size[0];
-      double *input = THDoubleTensor_data(input_data);
-      double *output = THDoubleTensor_data(output_data);
-      double *code = THDoubleTensor_data(code_data);
-      double *weight = THDoubleTensor_data(weight_data);
-      double *std = THDoubleTensor_data(std_data);
-      double dist, yi_hat, sigma;
+      float *input = THFloatTensor_data(input_data);
+      float *output = THFloatTensor_data(output_data);
+      float *code = THFloatTensor_data(code_data);
+      float *weight = THFloatTensor_data(weight_data);
+      float *std = THFloatTensor_data(std_data);
+      float dist, yi_hat, sigma;
 
       for (y=0; y<iheight; y++) {
          for (x=0; x<iwidth; x++) {

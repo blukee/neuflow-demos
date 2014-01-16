@@ -4,7 +4,7 @@ require 'nnx'
 local c = require 'coroutines'
 
 encoder = torch.load(options.encoder)
-encoder:double()--float()
+encoder:float()
 local mind_enc = encoder.modules[1].gradInput:size(1)
 local minh_enc = encoder.modules[1].gradInput:size(2)
 local minw_enc = encoder.modules[1].gradInput:size(3)

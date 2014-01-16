@@ -74,7 +74,7 @@ op:option{'-st','--std', action='store', dest='std',
 options,args = op:parse()
 options.classes = {'Object 1'} -- class names
 
--- set the number of threads
+torch.setdefaulttensortype('torch.FloatTensor')
 torch.setnumthreads(options.threads)
 print('Number of threads:', torch.getnumthreads())
 
